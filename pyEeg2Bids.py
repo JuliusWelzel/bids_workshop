@@ -43,6 +43,8 @@ for dir_id in dirs_ids:
         
         # delete events if they start before eeg recording
         events = mne.events_from_annotations(raw)
+
+        # specify BIDS path and write
         bids_path = BIDSPath(subject=sub_id, task=task, datatype='eeg', root=dir_root_bids)
         write_raw_bids(raw, bids_path, events=None, overwrite=True, allow_preload=True, format='BrainVision', verbose=True)
 
