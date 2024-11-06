@@ -12,14 +12,12 @@ bidsFolder = fullfile(dir_project, 'data', 'bids');
 eegJSON         = fullfile(bidsFolder, 'sub-001\eeg\sub-001_task-SpotRotation_eeg.json'); 
 
 file            = ft_read_json(eegJSON);
-file            = rmfield(file, 'README');
 ft_write_json(eegJSON, file)
 
 
 motionJSON      = fullfile(bidsFolder, 'sub-001\motion\sub-001_task-SpotRotation_tracksys-HTCVive_motion.json'); 
 
 file            = ft_read_json(motionJSON);
-file            = rmfield(file, 'README');
 ft_write_json(motionJSON, file)
 
 

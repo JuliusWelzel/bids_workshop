@@ -5,7 +5,7 @@ dir_sourcedata = fullfile(dir_project, 'data', 'sourcedata');
 dir_bidsdata = fullfile(dir_project, 'data', 'bids');
 
 % Change to the parent directory of the script
-cd(fullfile(proj_dir));
+cd(fullfile(dir_project));
 
 % add fieldtrip 
 addpath(fullfile('.', dir('*fieldtrip*').name)); % add Fieldtrip

@@ -27,7 +27,7 @@ for dir_id in dirs_ids:
 
         # get info for BIDS
         # id from directory name, might be different for your data
-        sub_id = dir_id.name
+        sub_id = '00' + dir_id.name
 
         # find eeg stream in .xdf file
         streams, _ = load_xdf(file_xdf)
@@ -43,6 +43,15 @@ for dir_id in dirs_ids:
         
         # delete events if they start before eeg recording
         events = mne.events_from_annotations(raw)
+
+        # import the channel locations from a .elc file
+        elc_file = file_xdf.parent.joinpath('channel_locations.elc')
+        cust_layout = mne.channels.make_standard_montage('biosemi160')
+
+        # make all channel type eeg
+        raw.set_channel_types({ch: 'eeg' for ch in raw.ch_names})
+        # set montage
+        raw.set_montage(cust_layout)
 
         # specify BIDS path and write
         bids_path = BIDSPath(subject=sub_id, task=task, datatype='eeg', root=dir_root_bids)
