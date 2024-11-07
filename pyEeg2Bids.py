@@ -44,15 +44,6 @@ for dir_id in dirs_ids:
         # delete events if they start before eeg recording
         events = mne.events_from_annotations(raw)
 
-        # import the channel locations from a .elc file
-        elc_file = file_xdf.parent.joinpath('channel_locations.elc')
-        cust_layout = mne.channels.make_standard_montage('biosemi160')
-
-        # make all channel type eeg
-        raw.set_channel_types({ch: 'eeg' for ch in raw.ch_names})
-        # set montage
-        raw.set_montage(cust_layout)
-
         # specify BIDS path and write
         bids_path = BIDSPath(subject=sub_id, task=task, datatype='eeg', root=dir_root_bids)
         write_raw_bids(raw, bids_path, events=None, overwrite=True, allow_preload=True, format='BrainVision', verbose=True)

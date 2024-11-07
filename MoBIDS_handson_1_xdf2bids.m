@@ -1,6 +1,5 @@
 %% Get the full path of the current script and set directory names
-scriptPath = fileparts(mfilename('fullpath'));
-dir_project= char(java.io.File(fullfile(scriptPath)).getCanonicalPath); % Convert to canonical absolute path
+dir_project= fullfile('C:\Users\juliu\Desktop\kiel\bids_workshop');
 dir_sourcedata = fullfile(dir_project, 'data', 'sourcedata');
 dir_bidsdata = fullfile(dir_project, 'data', 'bids');
 

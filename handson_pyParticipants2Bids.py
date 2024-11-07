@@ -34,7 +34,7 @@ df.to_csv(dir_root_bids.joinpath('participants.tsv'), sep='\t', index=False)
 df = pd.read_csv(dir_root_bids.joinpath('participants.tsv'), sep='\t')
 
 # Edit the participant data, where id is 'sub-1'
-df.loc[df['participant_id'] == 'sub-1', 'age'] = 26
+df.loc[df['participant_id'] == 'sub-002', 'age'] = 26
 
 # assign the group 'control' to all participants
 df['group'] = 'control'
